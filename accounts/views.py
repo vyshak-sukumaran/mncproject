@@ -11,8 +11,7 @@ def register(request):
     form = Registration.objects.all()
     if request.method == 'POST':
         form = Registration(request.POST)
-        if form.is_valid():
-            form.save()
+        form.save()
         return redirect('/')
         
 
@@ -20,4 +19,5 @@ def register(request):
     return render(request, 'accounts/register.html')
 
 def login(request):
-    return HttpResponse('login')
+    
+    return render(request, 'accounts/login.html')
