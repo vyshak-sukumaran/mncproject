@@ -9,15 +9,12 @@ def index(request):
 def register(request):
 
     form = Registration.objects.all()
-    if request.method == 'POST':
-        form = Registration(request.POST)
-        form.save()
-        return redirect('/')
+   
         
 
 
     return render(request, 'accounts/register.html')
 
 def login(request):
-    
+
     return render(request, 'accounts/login.html')
