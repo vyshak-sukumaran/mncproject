@@ -1,6 +1,7 @@
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from .models import Registration
+from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
 def home(request):
@@ -9,12 +10,16 @@ def home(request):
 
 def register(request):
 
-    form = Registration.objects.all()
-   
-        
+    form = UserCreationForm()
+    
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
 
 
-    return render(request, 'accounts/register.html')
+    context = {'form':form}
+    return render(request, 'accounts/register.html',context)
 
 def login(request):
 
