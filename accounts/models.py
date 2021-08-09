@@ -6,7 +6,7 @@ class Registration(models.Model):
     firstname = models.CharField(max_length=50)
     lastname = models.CharField(max_length=50)
     username = models.CharField(max_length=50)
-    age = models.IntegerField()
+    email = models.EmailField(default='example@gmail.com')
     firstpassword = models.CharField(max_length=50)
     confirmpassword = models.CharField(max_length=50)
 
