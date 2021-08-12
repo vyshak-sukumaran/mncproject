@@ -1,0 +1,85 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<style>
+    .add{
+        margin:0 auto;
+        width: 600px;
+        height: 200px;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .post_input{
+        height: 150px;
+        width: 500px;
+    }
+    .button{
+        margin-top: 10px;
+        margin-left: 60px;
+    }
+    .view{
+        margin:0 auto;
+        width: 500px;
+        height: 70px;
+        
+        
+    }
+    .middle{
+        margin: 0 auto;
+    }
+</style>
+
+            
+<div class="col-12 col-lg-6 middle" >
+
+    <div class="middle-column">
+
+        <div class="card" >
+
+            <div class="card-header bg-transparent">
+                <form class="form-inline" method="POST" action="">
+                    {% csrf_token %}
+
+                    <div class="input-group w-100">
+                     <input type="text" name="addpost" id="message" placeholder="Add post" class="form-control form-control-md">
+
+                     <div class="input-group-append">
+                            <div class="input-group-button">
+                                <button class="btn btn-primary " type="submit" name="submit"><i class="fa fa-paper-plane"></i></button>
+                            </div>
+                     </div>
+                    </div>  
+                </form>
+            </div>                 
+            
+            {% for post in newpost %}
+
+            <div class="card-body">
+
+                <div class="media">
+                    <img src="{% static 'img/profile-icon.png' %}" alt="img" width="55px" height="55px" class="rounded-circle mr-3">
+
+                    <div class="media-body">
+                        <h5>User Name</h5>
+                        
+                        <p class="text-justify">{{post}}</p>
+                        
+                    </div>
+
+                    <small>{{post.posted_on}}</small>
+                </div>
+                
+            </div>
+            <hr>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<br> <br> <br><br> <br> <br>
+
+
+{% endblock %}

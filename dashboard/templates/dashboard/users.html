@@ -1,0 +1,106 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+
+    <header class="py-2 bg-warning text-white" id="main-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1><i class="fas fa-users"></i> Users</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!---Actions-->
+
+    <section id="action" class="py-4 mb-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 ml-auto">
+                    <div class="input-group">
+                        <input type="text" placeholder="Search..." class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning">Search</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!----Users----->
+
+    <section id="users">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Users</h4>
+                        </div>
+                        <table class="table table-striped ">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row">1</td>
+
+                                    <td>Sohan</td>
+                                    <td>sohan.rahman66d@gmail.com</td>
+
+                                </tr>
+                                <tr>
+                                    <td scope="row">2</td>
+
+                                    <td>Novojit</td>
+                                    <td>novojit@gmail.com</td>
+
+                                </tr>
+                                <tr>
+                                    <td scope="row">3</td>
+
+                                    <td>Darus</td>
+                                    <td>darus@gmail.com</td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <nav class="ml-4">
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <a href="#" class="page-link"> <i class="fas fa-long-arrow-alt-left"></i>
+                                        Previous</a>
+                                </li>
+                                <li class="page-item active">
+                                    <a href="#" class="page-link">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">Next <i class="fas fa-long-arrow-alt-right"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {% endblock %}
