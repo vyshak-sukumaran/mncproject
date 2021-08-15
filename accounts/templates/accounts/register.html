@@ -10,4 +10,42 @@
 <h1>Register</h1>
 
 
+<form action="" method="POST">
+    {% csrf_token %}
+
+    {{form.first_name.label}}<br>
+    {{form.first_name}}
+    <br>
+
+    {{form.last_name.label}}<br>
+    {{form.last_name}}
+    <br>
+
+    {{form.username.label}}<br>
+    {{form.username}}
+    <br>
+
+    {{form.email.label}}<br>
+    {{form.email}}
+    <br>
+
+    {{form.password1.label}}<br>
+    {{form.password1}}
+    <br>
+
+    {{form.password2.label}}<br>
+    {{form.password2}}
+    <br>
+
+
+    <br>
+    <input type="submit" name="signin" value="signin"> 
+    
+    <br>
+    {{form.errors}}
+
+</form>
+
+
+
 {% endblock %}
