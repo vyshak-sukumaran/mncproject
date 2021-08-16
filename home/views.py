@@ -2,6 +2,11 @@ from django.shortcuts import render
 from .models import AddPosts
 # Create your views here.
 
+def index(request):
+
+
+    return render(request, 'home/index.html')
+
 def home(request):
     
     if request.method == 'POST':

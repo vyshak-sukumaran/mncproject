@@ -1,3 +1,4 @@
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -5,27 +6,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MNCProject</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
 </head>
 <body>
+    
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="container">
+        <a class="navbar-brand" href="#">#1</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Features</a>
-            <a class="nav-item nav-link" href="#">Pricing</a>
-            
-            <a class="nav-item nav-link" href="#">Login</a>
-            <a class="nav-item nav-link" href="#">Signup</a>
-                
-          </div>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Profile Settings</a>
+            </li>
+           
+            <li class="nav-item active">
+              <a class="nav-link btn btn-primary btn-sm ml-3 text-light" href="#">Login</a>
+            </li>
+          </ul>
+        
         </div>
+    </div>
       </nav>
 
 
@@ -34,9 +45,80 @@
     {% endblock %}
 
 
-    
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
-</body>
-</html>
+
+      <footer class="mainfooter" role="contentinfo">
+        <div class="footer-middle">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+              <!--Column1-->
+              <div class="footer-pad">
+                <h4>Heading 1</h4>
+                <ul class="list-unstyled">
+                  <li><a href="#"></a></li>
+                  <li><a href="#">Payment Center</a></li>
+                  <li><a href="#">Contact Directory</a></li>
+                  <li><a href="#">Forms</a></li>
+                  <li><a href="#">News and Updates</a></li>
+                  <li><a href="#">FAQs</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <!--Column1-->
+              <div class="footer-pad">
+                <h4>Heading 2</h4>
+                <ul class="list-unstyled">
+                  <li><a href="#">Website Tutorial</a></li>
+                  <li><a href="#">Accessibility</a></li>
+                  <li><a href="#">Disclaimer</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">FAQs</a></li>
+                  <li><a href="#">Webmaster</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <!--Column1-->
+              <div class="footer-pad">
+                <h4>Heading 3</h4>
+                <ul class="list-unstyled">
+                  <li><a href="#">Parks and Recreation</a></li>
+                  <li><a href="#">Public Works</a></li>
+                  <li><a href="#">Police Department</a></li>
+                  <li><a href="#">Fire</a></li>
+                  <li><a href="#">Mayor and City Council</a></li>
+                  <li>
+                    <a href="#"></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+              <div class="col-md-3">
+                  <h4>Follow Us</h4>
+                  <ul class="social-network social-circle">
+                   <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                   <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                  </ul>				
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12 copy">
+                  <p class="text-center">&copy; Copyright 2018 - Company Name.  All rights reserved.</p>
+              </div>
+          </div>
+      
+      
+        </div>
+        </div>
+      </footer>
+        
+        
+        </body>
+      </html>
+      
+          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      </body>
+      </html>
