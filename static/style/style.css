@@ -250,3 +250,16 @@ footer {
       transform: rotate(60deg);
       background-color: #f2f8cd;
   }
+
+.rating{
+    width: 20px;
+}
+.profile{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+.title-profile{
+    width: 30px;
+
+}

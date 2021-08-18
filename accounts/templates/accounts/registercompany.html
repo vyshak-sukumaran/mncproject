@@ -2,21 +2,6 @@
 
 {% block content %}
 
-<style>
-    input[type=text],input[type=email],input[type=password]{
-        display: block;
-        width: 100%;
-        padding: .375rem .75rem;
-        font-size: 1rem;
-        line-height: 1.5;
-        color: #495057;
-        background-color: #fff;
-        background-clip: padding-box;
-        border: 1px solid #ced4da;
-        border-radius: .25rem;
-        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    }
-</style>
 
 
       <div class="container">
@@ -27,20 +12,20 @@
 
                        <h3 class="text-center login-heading">Register</h3>
                        <div class="form-group">
-                           <label for="">First name</label>
-                           {{form.first_name}}
+                           <label for="">Company Name</label>
+                           {{form.name}}
                        </div>
                        <div class="form-group">
-                           <label for="">Last name</label>
-                           {{form.last_name}}
+                           <label for="">Description</label>
+                           {{form.description}}
                        </div>
                        <div class="form-group">
-                           <label for="">Username</label>
-                           {{form.username}}
-                       </div>
-                       <div class="form-group">
-                           <label for="">Email</label>
+                           <label for="">email</label>
                            {{form.email}}
+                       </div>
+                       <div class="form-group">
+                           <label for="">Phone</label>
+                           {{form.phone}}
                        </div>
                        <div class="form-group">
                             <label for="">Password</label>
