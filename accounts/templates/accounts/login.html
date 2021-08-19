@@ -23,9 +23,15 @@
                         <div class="form-group text-right">
                             <input type="submit" value="Login" id="" class="btn btn-primary">
                         </div>
+                        <span>
+                   {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                   </span>
                         <hr>
                         <a href="{% url 'register' %}" class="forgot-link"><span> Don't have account ?</span> Register</a>
                    </form>
+                   
                    
               </div>
           </div>
@@ -33,9 +39,7 @@
      
 
 
-    {% for message in messages %}
-        <p>{{message}}</p>
-    {% endfor %}
+    
 
 
 

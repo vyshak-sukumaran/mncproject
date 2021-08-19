@@ -33,29 +33,31 @@
                     </div>
                 </form>
 
+
+                {% for item in queryset %}
+
+                    {% if item.is_company %}
+
+                        
+                        <div class="companies-list">
+                            <h2>{{item.username}}</h2>
+                            <p>Company reviews go here and companies are sorted in order of highest rating. </p>
+                            <p>Rating - 
+                                <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                                <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                                <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                                <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                            </p>
+                            <a href="{% url 'openreview' %}" class="btn btn-primary">View Review</a>
+                        </div>
+
+                    {% endif %}
+
+                {% endfor %}
+
+
                 <!-- company list -->
-              <div class="companies-list">
-                  <h2>Company One </h2>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                  <p>Rating - 
-                      <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                      <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                      <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                      <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                  </p>
-                  <a href="{% url 'openreview' %}" class="btn btn-primary">View Review</a>
-              </div>
-              <div class="companies-list">
-                  <h2>Company Two </h2>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                  <p>Rating - 
-                    <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                    <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                    <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                    <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                </p>
-                  <a href="{% url 'openreview' %}" class="btn btn-primary">view Review</a>
-              </div>
+              
               </div>
           </div>
       </div>

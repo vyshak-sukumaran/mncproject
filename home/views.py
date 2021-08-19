@@ -1,14 +1,18 @@
+from django.db.models.query import QuerySet
+from django.db.models.query_utils import Q
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
+from accounts.models import User
 
 from .models import AddPosts
 # Create your views here.
 
 def index(request):
 
-
-    return render(request, 'home/index.html')
+    queryset = User.objects.all()
+    
+    context = {'queryset':queryset}
+    return render(request, 'home/index.html',context)
 
 def home(request):
     
@@ -27,13 +31,20 @@ def home(request):
 @login_required(login_url='login')
 def userProfile(request):
 
+    queryset = User.objects.all()
+    
+    context = {'queryset':queryset}
 
-    return render(request, 'home/userprofile.html')
+    return render(request, 'home/userprofile.html',context)
 
+@login_required(login_url='login')
 def companyProfile(request):
 
+    queryset = User.objects.all()
 
-    return render(request, 'home/companyprofile.html')
+    context = {'queryset':queryset}
+
+    return render(request, 'home/companyprofile.html',context)
 
 @login_required(login_url='login')
 def openReview(request):

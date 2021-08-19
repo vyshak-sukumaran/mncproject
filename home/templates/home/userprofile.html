@@ -29,19 +29,21 @@
                       </div>
                   </form>
 
-                  <!-- company list -->
-                <div class="companies-list">
-                    <h2>Company </h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                    <a href="{% url 'openreview' %}" class="btn btn-primary">Open Review</a>
-                    <a href="{% url 'unknownreview' %}" class="btn btn-warning">Review as Unknown</a>
-                </div>
-                <div class="companies-list">
-                    <h2>Company </h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                    <a href="{% url 'openreview' %}" class="btn btn-primary">Open Review</a>
-                    <a href="{% url 'unknownreview' %}" class="btn btn-warning">Review as Unknown</a>
-                </div>
+                <!-- company list -->
+
+                {% for item in queryset %}
+                    {% if item.is_company %}
+
+                        <div class="companies-list">
+                            <h2> {{item.username}} </h2>
+                            <p>Company description will go here. </p>
+                            <a href="{% url 'openreview' %}" class="btn btn-primary">Open Review</a>
+                            <a href="{% url 'unknownreview' %}" class="btn btn-warning">Review as Unknown</a>
+                        </div>
+
+                    {% endif %}
+                {% endfor %}
+                  
               </div>
 
           </div>

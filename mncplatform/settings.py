@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'dashboard.apps.DashboardConfig',
     'home.apps.HomeConfig',
 
+    'django_extensions',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -109,6 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+AUTH_USER_MODEL = 'accounts.User'
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -131,6 +135,10 @@ STATIC_URL = '/static/'
 #To perform "collectstatic"
 
 STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+
+
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

@@ -7,77 +7,67 @@
 
       <div class="container pt-5">
           <div class="row">
-              <div class="col-md-3">
-                  <div class="card text-center align-items-center pt-5 pb-5">
+              <div class="col-md-4">
+                  {% if user.is_authenticated %}
+                                              
+                  <div class="card text-center align-items-center pt-5 pb-5 company-profile-card">
                       <img src="https://banner2.cleanpng.com/20180517/uzq/kisspng-computer-icons-user-profile-male-avatar-5afd8d7b2682b3.7338522715265662671577.jpg" alt="" class="profile ">
-                      <p class="pt-2">Name : Company One</p>
-                      <p>Email : company@gmail.com</p>
+                      <p class="pt-2">Name : {{user.username}}</p>
+                      <p>Email : {{user.email}}</p>
                       <p>Phone : 9876542130</p>
                       <button class="btn btn-primary">Edit </button>
                   </div>
+                  
+                  {% endif %}
+
               </div>
-              <div class="col-md-6">
+              <div class="col-md-8">
 
                 <h2>Employee Reviews </h2>
-                <div class="list-group mb-3">
-                    <a href="#" class="list-group-item list-group-item-action active">UserOne , <span class="float-right">14-09-2021</span> </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                        <br>
-                        <img src="https://www.pinclipart.com/picdir/middle/5-50759_dodgeball-clipart.png" alt="" class="rating">
-                        <img src="https://www.pinclipart.com/picdir/middle/5-50759_dodgeball-clipart.png" alt="" class="rating">
-                        <img src="https://www.pinclipart.com/picdir/middle/5-50759_dodgeball-clipart.png" alt="" class="rating">
 
-                    </a>                    
-                </div>
-                <div class="list-group mb-3">
-                    <a href="#" class="list-group-item list-group-item-action active">UserTwo , <span class="float-right">14-09-2021</span> </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                        <br>
-                        <img src="https://www.pinclipart.com/picdir/middle/5-50759_dodgeball-clipart.png" alt="" class="rating">
-                        <img src="https://www.pinclipart.com/picdir/middle/5-50759_dodgeball-clipart.png" alt="" class="rating">
-                        <img src="https://www.pinclipart.com/picdir/middle/5-50759_dodgeball-clipart.png" alt="" class="rating">
+                {% for item in queryset %}
+                  {% if item.is_employee %}
 
-                    </a>                    
-                </div>
-                <div class="list-group mb-3">
-                    <a href="#" class="list-group-item list-group-item-action active">UserThree , <span class="float-right">14-09-2021</span> </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                        <br>
-                        <img src="https://www.pinclipart.com/picdir/middle/5-50759_dodgeball-clipart.png" alt="" class="rating">
-                        <img src="https://www.pinclipart.com/picdir/middle/5-50759_dodgeball-clipart.png" alt="" class="rating">
-                        <img src="https://www.pinclipart.com/picdir/middle/5-50759_dodgeball-clipart.png" alt="" class="rating">
+                    <div class="companies-list">
+                      <span class="float-right">14-09-2021</span>
+                      <h2>{{item.username}} </h2>
+                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                      <p>Rating - 
+                          <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                          <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                          <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                          <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                      </p>
+                      <a href="{% url 'openreview' %}" class="btn btn-primary">View Review</a>
+                    </div>
 
-                    </a>                    
-                </div>
+                  {% endif %}
+                {% endfor %}
+
+                
+                
 <!-- pagination -->
-                <div>
-                    <ul class="pagination">
-                      <li class="page-item disabled">
-                        <a class="page-link" href="#">&laquo;</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="#">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">5</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">&raquo;</a>
-                      </li>
-                    </ul>
-                  </div>
+              <div class="pagination-div-bottom">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
               </div>
           </div>
       </div>

@@ -1,40 +1,24 @@
 from django import forms
-from django.db.models import fields
-from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from .models import User
 
-from .models import CompanyRegister
 
-class CreateUserForm(UserCreationForm):
-    class Meta:
-        model = User
-        fields = ['first_name','last_name','username','email','password1','password2']
-
-class CreateCompanyForm(forms.ModelForm):
-   
-    name = forms.CharField(
+class SignUpForm(UserCreationForm):
+    first_name = forms.CharField(
         widget=forms.TextInput(
             attrs={
                 "class": "form-control"
             }
         )
     )
-    description = forms.CharField(
+    last_name = forms.CharField(
         widget=forms.TextInput(
             attrs={
                 "class": "form-control"
             }
         )
     )
-    email = forms.EmailField(
-        widget=forms.TextInput(
-            attrs={
-                "class": "form-control"
-            }
-        )
-    )
-    phone = forms.IntegerField(
+    username = forms.CharField(
         widget=forms.TextInput(
             attrs={
                 "class": "form-control"
@@ -55,7 +39,14 @@ class CreateCompanyForm(forms.ModelForm):
             }
         )
     )
+    email = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control"
+            }
+        )
+    )
 
     class Meta:
-        model = CompanyRegister
-        fields = '__all__'
+        model = User
+        fields = ('first_name','last_name','username', 'email', 'password1', 'password2', 'is_employee','is_company')

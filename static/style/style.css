@@ -263,3 +263,14 @@ footer {
     width: 30px;
 
 }
+
+.pagination-div-bottom{
+  margin-top: 10px;
+}
+
+.company-profile-card{
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 10px;
+  box-shadow: 0 0 15px 0px #a6b2be;
+}
