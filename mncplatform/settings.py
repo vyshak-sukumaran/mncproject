@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'mncplatform.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME' : 'mnc_db',
+        'NAME' : 'main_db',
         'USER' : 'postgres',
         'PASSWORD' : 'root',
         'HOST' : 'localhost',

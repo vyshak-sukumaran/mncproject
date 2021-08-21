@@ -1,4 +1,4 @@
-from django.db.models.query import QuerySet
+
 from django.db.models.query_utils import Q
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
@@ -9,9 +9,9 @@ from .models import AddPosts
 
 def index(request):
 
-    queryset = User.objects.all()
+    user = User.objects.all()
     
-    context = {'queryset':queryset}
+    context = {'user':user}
     return render(request, 'home/index.html',context)
 
 def home(request):
@@ -29,20 +29,21 @@ def home(request):
     return render(request, 'home/home.html',context)
 
 @login_required(login_url='login')
-def userProfile(request):
+def employeeProfile(request):
 
-    queryset = User.objects.all()
+    user = User.objects.all()
     
-    context = {'queryset':queryset}
+    context = {'user':user}
 
-    return render(request, 'home/userprofile.html',context)
+    return render(request, 'home/employeeprofile.html',context)
 
 @login_required(login_url='login')
 def companyProfile(request):
 
-    queryset = User.objects.all()
 
-    context = {'queryset':queryset}
+    user = User.objects.all()
+
+    context = {'user':user}
 
     return render(request, 'home/companyprofile.html',context)
 

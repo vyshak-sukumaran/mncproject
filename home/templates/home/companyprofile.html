@@ -8,30 +8,36 @@
       <div class="container pt-5">
           <div class="row">
               <div class="col-md-4">
-                  {% if user.is_authenticated %}
+              <span>
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+              </span>
+                   
                                               
-                  <div class="card text-center align-items-center pt-5 pb-5 company-profile-card">
-                      <img src="https://banner2.cleanpng.com/20180517/uzq/kisspng-computer-icons-user-profile-male-avatar-5afd8d7b2682b3.7338522715265662671577.jpg" alt="" class="profile ">
-                      <p class="pt-2">Name : {{user.username}}</p>
-                      <p>Email : {{user.email}}</p>
-                      <p>Phone : 9876542130</p>
-                      <button class="btn btn-primary">Edit </button>
-                  </div>
+              <div class="card text-center align-items-center pt-5 pb-5 company-profile-card">
+                  <img src="{{request.user.company.image.url}}" alt="" class="profile">
+                  <p class="pt-2">Name : {{request.user}}</p>
+                  <p>Email : {{request.user.email}}</p>
+                  <p>Phone : {{request.user.company.phone}}</p>
+                  <a href="{% url 'editcompany' %}" class="btn btn-primary">Edit </a>
+              </div>
+          
+            
                   
-                  {% endif %}
 
               </div>
               <div class="col-md-8">
 
                 <h2>Employee Reviews </h2>
 
-                {% for item in queryset %}
+                {% for item in user %}
                   {% if item.is_employee %}
 
                     <div class="companies-list">
                       <span class="float-right">14-09-2021</span>
                       <h2>{{item.username}} </h2>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                      <p>Company specific review will go here. </p>
                       <p>Rating - 
                           <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
                           <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
