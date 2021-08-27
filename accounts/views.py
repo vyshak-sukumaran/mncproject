@@ -35,11 +35,11 @@ def loginPage(request):
         user = authenticate(request, username=username, password=password)
         if user is not None and user.is_employee:
             login(request, user)
-            return redirect('index')
+            return redirect('employee')
 
         elif user is not None and user.is_company:
             login(request, user)
-            return redirect('index')
+            return redirect('company')
                 
         else:
             messages.info(request, 'Username or Password Incorrect !')

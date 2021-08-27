@@ -1,27 +1,30 @@
 
+from home.forms import ReviewForm,UnknownForm
 from django.db.models.query_utils import Q
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from accounts.models import User
+from django.http import HttpResponseRedirect
 
-from .models import AddPosts
+
+from accounts.models import Company, Employee, User
+from .models import Review, Unknown
 # Create your views here.
 
 def index(request):
 
-    user = User.objects.all()
+    company = Company.objects.all()
     
-    context = {'user':user}
+    context = {'company':company}
     return render(request, 'home/index.html',context)
 
 def home(request):
     
     if request.method == 'POST':
         if request.POST.get('addpost'):
-            newpost = AddPosts()
+            newpost = Review()
             newpost.post = request.POST.get('addpost')
             newpost.save()
-    newpost = AddPosts.objects.all()
+    newpost = Review.objects.all()
 
 
 
@@ -31,9 +34,10 @@ def home(request):
 @login_required(login_url='login')
 def employeeProfile(request):
 
-    user = User.objects.all()
+    company = Company.objects.all()
     
-    context = {'user':user}
+
+    context = {'company':company}
 
     return render(request, 'home/employeeprofile.html',context)
 
@@ -41,21 +45,52 @@ def employeeProfile(request):
 def companyProfile(request):
 
 
-    user = User.objects.all()
+    review = Review.objects.all()
 
-    context = {'user':user}
+    context = {'review':review}
 
     return render(request, 'home/companyprofile.html',context)
 
 @login_required(login_url='login')
-def openReview(request):
+def openReview(request,pk):
 
+    company = Company.objects.get(id=pk)
+    
+    reviewform = ReviewForm()
+    
+    if request.method == 'POST':
+        reviewform = ReviewForm(request.POST)
+        if reviewform.is_valid():
+            a = reviewform.save(commit=False)
+            a.company = company
+            a.employee = request.user
+            a.save()
+            return HttpResponseRedirect(request.path_info)
+    
+    showreview = Review.objects.all()
 
-    return render(request, 'home/openreview.html')
+    context = {'company':company,'review':reviewform,'showreview':showreview}
+
+    return render(request, 'home/openreview.html',context)
 
 @login_required(login_url='login')
-def unknownReview(request):
+def unknownReview(request,pk):
+
+    company = Company.objects.get(id=pk)
+    unknownform = UnknownForm()
+    if request.method == 'POST':
+        unknownform = UnknownForm(request.POST)
+        if unknownform.is_valid():
+            a = unknownform.save(commit=False)
+            a.company = company
+            a.employee = request.user
+            a.save()
+    
+    context = {'company':company,'unknownform':unknownform}
+    return render(request, 'home/unknownreview.html',context)
+
+@login_required(login_url='login')
+def companyDashboard(request):
 
 
-    return render(request, 'home/unknownreview.html')
-
+    return render(request, 'home/companydashboard.html')

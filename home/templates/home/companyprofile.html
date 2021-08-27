@@ -16,7 +16,7 @@
                    
                                               
               <div class="card text-center align-items-center pt-5 pb-5 company-profile-card">
-                  <img src="{{request.user.company.image.url}}" alt="" class="profile">
+                  <img src="{{request.user.company.image.url}}" alt="" class="user-profile rounded">
                   <p class="pt-2">Name : {{request.user}}</p>
                   <p>Email : {{request.user.email}}</p>
                   <p>Phone : {{request.user.company.phone}}</p>
@@ -31,23 +31,27 @@
 
                 <h2>Employee Reviews </h2>
 
-                {% for item in user %}
-                  {% if item.is_employee %}
-
+                {% for item in review %}
+                  {% if item.company.user == request.user %}
+                  
                     <div class="companies-list">
-                      <span class="float-right">14-09-2021</span>
-                      <h2>{{item.username}} </h2>
-                      <p>Company specific review will go here. </p>
-                      <p>Rating - 
-                          <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                          <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                          <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                          <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                      </p>
-                      <a href="{% url 'openreview' %}" class="btn btn-primary">View Review</a>
-                    </div>
+                        <span class="float-right">{{item.posted_on}}</span>
+                        <h2>{{item.employee}}</h2>
+                        <p>{{item.post}} </p>
+                        <p>Rating - 
+                            <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                            <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                            <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                            <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                        </p>
+                        <a href="#" class="btn btn-primary">View Review</a>
+                      </div>
 
                   {% endif %}
+                      
+
+                    
+
                 {% endfor %}
 
                 

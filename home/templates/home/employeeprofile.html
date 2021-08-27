@@ -6,7 +6,7 @@
           <div class="row">
               <div class="col-md-12 mt-3">
                   <div class="profile-container">
-                      <img src="{{request.user.employee.image.url}}" alt="" class="user-profile">
+                      <img src="{{request.user.employee.image.url}}" alt="" class="user-profile rounded">
                         
                     
                         <div class="profile-details">
@@ -32,17 +32,17 @@
 
                 <!-- company list -->
 
-                {% for item in user %}
-                    {% if item.is_company %}
+                {% for item in company %}
+    
 
                         <div class="companies-list">
-                            <h2> {{item.username}} </h2>
-                            <p>{{item.company.description}} </p>
-                            <a href="{% url 'openreview' %}" class="btn btn-primary">Open Review</a>
-                            <a href="{% url 'unknownreview' %}" class="btn btn-warning">Review as Unknown</a>
+                            <h2> {{item.user.username}} </h2>
+                            <p>{{item.description}} </p>
+                            <a href="{% url 'openreview' item.id %}" class="btn btn-primary">Open Review</a>
+                            <a href="{% url 'unknownreview' item.id %}" class="btn btn-warning">Unknown Review</a>
+                                
                         </div>
 
-                    {% endif %}
                 {% endfor %}
                   
               </div>

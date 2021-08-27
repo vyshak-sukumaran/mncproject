@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import AddPosts
+from .models import Review, Unknown
 # Register your models here.
 
-admin.site.register(AddPosts)
+admin.site.register(Review)
+admin.site.register(Unknown)

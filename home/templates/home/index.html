@@ -34,7 +34,7 @@
           
               <div class="col-md-12">
               
-                <form action="" method="post" >
+                <form action="" method="post" class="search-form">
                     <div class="search mb-4">
                         <input type="text" class="form-search" placeholder="Search Company">
                         <button>
@@ -46,24 +46,24 @@
                 <h2>Top Rated companies</h2>
  
 
-                {% for item in user %}
-
-                    {% if item.is_company %}
+                {% for item in company %}
+                        
+                    <div class="companies-list">
+                        <h2>{{item.user.username}}</h2>
+                        <p>{{item.description}} </p>
+                        <p>Rating - 
+                        
+                        <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                        <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                        <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                        <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
 
                         
-                        <div class="companies-list">
-                            <h2>{{item.username}}</h2>
-                            <p>{{item.company.description}} </p>
-                            <p>Rating - 
-                                <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                                <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                                <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                                <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                            </p>
-                            <a href="{% url 'openreview' %}" class="btn btn-primary">View Review</a>
-                        </div>
-
-                    {% endif %}
+                        
+                            
+                        </p>
+                        <a href="{% url 'openreview' item.id %} " class="btn btn-primary">View Review</a><!-- {% url 'openreview' item.id %} -->
+                    </div>
 
                 {% endfor %}
 
