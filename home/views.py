@@ -46,8 +46,9 @@ def companyProfile(request):
 
 
     review = Review.objects.all()
+    unknown = Unknown.objects.all()
 
-    context = {'review':review}
+    context = {'review':review,'unknown':unknown}
 
     return render(request, 'home/companyprofile.html',context)
 
@@ -65,9 +66,10 @@ def openReview(request,pk):
             a.company = company
             a.employee = request.user
             a.save()
-            return HttpResponseRedirect(request.path_info)
+            return redirect('openreview',pk=a.company.id)
     
     showreview = Review.objects.all()
+
 
     context = {'company':company,'review':reviewform,'showreview':showreview}
 
@@ -77,7 +79,7 @@ def openReview(request,pk):
 def unknownReview(request,pk):
 
     company = Company.objects.get(id=pk)
-    unknownform = UnknownForm()
+    
     if request.method == 'POST':
         unknownform = UnknownForm(request.POST)
         if unknownform.is_valid():
@@ -85,8 +87,14 @@ def unknownReview(request,pk):
             a.company = company
             a.employee = request.user
             a.save()
-    
-    context = {'company':company,'unknownform':unknownform}
+            return redirect('unknownreview', pk=a.company.id)
+    else:
+        unknownform = UnknownForm()
+
+    unknown_review = Unknown.objects.all()
+
+
+    context = {'company':company,'unknownform':unknownform,'unknown_review':unknown_review}
     return render(request, 'home/unknownreview.html',context)
 
 @login_required(login_url='login')

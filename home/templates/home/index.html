@@ -16,7 +16,7 @@
                     gets easier.</h2>
                     <p class="banner-text">#1 rank your company</p>
                     <a href="{% url 'register' %}" class="btn btn-primary">SignUp</a>
-                    <a href="{% url 'home' %}" class="btn btn-info">Explorer</a>
+                    <a href="#top-companies" class="btn btn-info">Explorer</a>
               </div>
               <div class="col-md-6">
                   <img src="{% static 'img/banner.png' %}" alt="" class="img-fluid mt-5">
@@ -28,13 +28,14 @@
       
 
 
-      <div class="container mt-3">
+      <div class="container mt-3" id="top-companies">
       
           <div class="row">
           
               <div class="col-md-12">
               
                 <form action="" method="post" class="search-form">
+                {% csrf_token %}
                     <div class="search mb-4">
                         <input type="text" class="form-search" placeholder="Search Company">
                         <button>

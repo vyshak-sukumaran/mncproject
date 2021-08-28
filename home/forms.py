@@ -1,14 +1,7 @@
 from django import forms
 
-from .models import Review, Unknown
+from .models import Review, Unknown, CHOICES
 
-CHOICES = (
-    (1,'1'),
-    (2,'2'),
-    (3,'3'),
-    (4,'4'),
-    (5,'5'),
-)
 
 
 class ReviewForm(forms.ModelForm):
@@ -20,6 +13,14 @@ class ReviewForm(forms.ModelForm):
             }
         )
     )
+    rating = forms.IntegerField(
+        widget=forms.Select(
+            choices=CHOICES,
+            attrs={
+                'class':'form-control'
+            }
+            )
+        )
 
     class Meta:
         model = Review

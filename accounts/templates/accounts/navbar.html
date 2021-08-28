@@ -20,10 +20,20 @@
                   Notifications <div class="badge badge-danger">10</div>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Lorem Ipsum ..</a>
-                  <a class="dropdown-item" href="#">Lorem Ipsum is ...</a>
+                  {% for item in unknown %}
+                    {% if item.company.user == request.user %}
+                    <div class="card">
+                      <div class="card-body">
+                        <span class="float-right">{{item.posted_on}}</span>
+                        <a class="dropdown-item" href="#">{{item.post}}</a>
+                      </div>
+                    </div>
+                      
+                    {% endif %}
+                  {% endfor %}
                 </div>
               </li>
+
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'companydashboard' %}">Employees</a>
               </li>
@@ -53,8 +63,24 @@
               <li class="nav-item active">
                 <a class="nav-link btn btn-primary btn-sm ml-3 text-light" href="{% url 'logout' %}">Logout</a>
               </li>
+            
+            {% else %}
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'employee' %}">Profile Settings</a>
+              </li>
+              <li class="nav-item active">
+                <span><a class="nav-link" href="#"> Hello, {{request.user}}</a></span>
+              </li>
+
+              <li class="nav-item active">
+                <a class="nav-link btn btn-primary btn-sm ml-3 text-light" href="{% url 'logout' %}">Logout</a>
+              </li>
 
             {% endif %} 
+            
 
         {% else %}
            <li class="nav-item ">

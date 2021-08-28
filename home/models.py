@@ -17,7 +17,7 @@ class Review(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True)
     post = models.CharField(max_length=500)
     posted_on = models.DateTimeField(auto_now_add=True)
-    rating = models.IntegerField(choices=CHOICES, null=True)
+    rating = models.IntegerField(choices=CHOICES,default=0, null=True)
 
     def __str__(self):
         return self.post

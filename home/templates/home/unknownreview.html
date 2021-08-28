@@ -53,7 +53,24 @@
 <!--popup/modal end-->
             
         </div>
+        
     </div>
+    <h2>My Reviews</h2>
+    <hr>
+    {% for review in unknown_review %}
+          
+        {% if review.employee == request.user %}
+        
+            <div class="companies-list">
+                <span class="float-right">{{review.posted_on}}</span>
+                <h2>{{review.company.user}}</h2>
+                <p>{{review.post}} </p>
+                
+            </div>
+        {% endif %}         
+        
+
+    {% endfor %}
 </div>
 
 {% endblock %}
