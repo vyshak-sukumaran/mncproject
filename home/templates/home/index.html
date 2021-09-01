@@ -1,8 +1,7 @@
 {% extends './base.html' %}
-
-
 {% load static %}
 
+{% block title %}Home{% endblock %}
 {% block content %}
 
 {% if request.user.is_authenticated %}
@@ -50,9 +49,9 @@
                 {% for item in company %}
                         
                     <div class="companies-list">
-                        <h2>{{item.user.username}}</h2>
-                        <p>{{item.description}} </p>
-                        <p>Rating - 
+                        <h2>Name : {{item.user.username}}</h2>
+                        <p>Company Descirption : {{item.description}} </p>
+                        <p>Average Rating : 
                         
                         <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
                         <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
@@ -63,7 +62,10 @@
                         
                             
                         </p>
-                        <a href="{% url 'openreview' item.id %} " class="btn btn-primary">View Review</a><!-- {% url 'openreview' item.id %} -->
+                        {% if request.user.is_employee %}
+                            <a href="{% url 'openreview' item.id %} " class="btn btn-primary">View Reviews</a><!-- {% url 'openreview' item.id %} -->
+                        {% endif %}
+                        
                     </div>
 
                 {% endfor %}

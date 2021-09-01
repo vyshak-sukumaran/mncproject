@@ -11,12 +11,11 @@ from .models import Review, Unknown
 # Create your views here.
 
 def index(request):
-
+    
     company = Company.objects.all()
     
     context = {'company':company}
     return render(request, 'home/index.html',context)
-
 def home(request):
     
     if request.method == 'POST':
@@ -52,7 +51,6 @@ def companyProfile(request):
 
     return render(request, 'home/companyprofile.html',context)
 
-@login_required(login_url='login')
 def openReview(request,pk):
 
     company = Company.objects.get(id=pk)

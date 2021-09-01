@@ -83,6 +83,20 @@ a:hover{
     font-size:30px;
 
 }
+.company-details h1{
+  font-size: 40px;
+  font-weight: 700;
+}
+.company-details{
+  font-weight: 400;
+  font-size:20px;
+
+}
+.user-profile{
+  display: block;   
+
+  /* background-color: red; */
+}
 .companies-list{
     padding: 20px;
     border-radius: 20px;
@@ -275,4 +289,16 @@ footer {
   margin-top: 10px;
   box-shadow: 0 0 15px 0px #a6b2be;
 }
-
+.review-header img{
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  float: left;
+  background: #555;
+}
+.review-header h2 {
+  position: relative;
+  margin-bottom: 2rem;
+  top: 18px;
+  left: 10px;
+}

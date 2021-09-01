@@ -1,18 +1,30 @@
 {% extends './base.html' %}
 {% load static %}
 
+{% block title %}Review{% endblock %}
 {% block content %}
 
 
 
 
       <div class="container">
-          <div class="row">
-              <div class="col-md-3">
-                  <img src="{{company.image.url}}" alt="" style="width: 150px;" class="user-profile rounded">
-                   <h2>{{company.user.username}}</h2>
+      <div class="row">
+          <div class="col-md-6 mt-3">
+            <div class="user-profile ">
+                <img src="{{company.image.url}}" alt="" class="profile">
+            
+                        
+                <div class="company-details ">
+                    <h1>{{company.user.username}}</h1>
+                    <p>{{company.user.email}}</p>
+                    <p>{{company.description}}</p>
+                </div>
+                </div>    
+        
               </div>
-              <div class="col-md-9">
+                  
+              
+              <div class="col-md-6">
 
                   <form action="" method="post">
                   {% csrf_token %}
@@ -25,17 +37,32 @@
                           {{review.rating}}
                       </div>
                       <div class="form-group">
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                      {% if request.user.is_authenticated %}
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      {% else %}
+                        <a href="{% url 'login' %} " class="btn btn-primary">Submit</a>
+                      {% endif %}
+                          
                       </div>
                   </form>
 
-                
+              </div>
+              </div>
+              
                 {% for item in showreview %}
                     {% if item.company == company %}
 
                     <div class="companies-list">
                         <span class="float-right">{{item.posted_on}}</span>
-                        <h2>{{item.employee}} </h2>
+
+                        <div class="review-header">
+                            <img src="{{item.employee.employee.image.url}}" alt="" class="review-user">
+                            <h2 >{{item.employee}} </h2>
+                        </div>
+                            
+                            
+                        
+                        
                         <p>{{item.post}}</p>
                         <p>Rating - 
                         <h4>{{item.rating}}<img src="{% static 'img/star.jpg' %}" alt="" class="star-img"></h4>
@@ -49,9 +76,13 @@
 
                 {% endfor %}
               
-              </div>
+               
+                
+              
+              
           </div>
       </div>
+      
      
 
 {% endblock %}

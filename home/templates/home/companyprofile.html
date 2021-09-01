@@ -1,8 +1,11 @@
 {% extends './base.html' %}
+{% load static %}
 
+
+{% block title %}Company profile{% endblock %}
 {% block content %}
 
-{% load static %}
+
 
 
       <div class="container pt-5">
@@ -36,7 +39,10 @@
                   
                     <div class="companies-list">
                         <span class="float-right">{{item.posted_on}}</span>
-                        <h2>{{item.employee}}</h2>
+                        <div class="review-header">
+                            <img src="{{item.employee.employee.image.url}}" alt="" class="review-user">
+                            <h2 >{{item.employee}} </h2>
+                        </div>
                         <p>{{item.post}} </p>
                         <p>Rating - 
                             <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
