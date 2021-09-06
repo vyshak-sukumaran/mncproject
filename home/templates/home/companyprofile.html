@@ -40,7 +40,11 @@
                     <div class="companies-list">
                         <span class="float-right">{{item.posted_on}}</span>
                         <div class="review-header">
+                        {% if item.employee.employee.image %}
                             <img src="{{item.employee.employee.image.url}}" alt="" class="review-user">
+                        {% else %}
+                            <img src="{% static 'img/profile-icon.png' %}" alt="" class="review-user">
+                        {% endif %}
                             <h2 >{{item.employee}} </h2>
                         </div>
                         <p>{{item.post}} </p>

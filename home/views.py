@@ -4,7 +4,7 @@ from django.db.models.query_utils import Q
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-
+from django.db.models import Avg
 
 from accounts.models import Company, Employee, User
 from .models import Review, Unknown
@@ -13,8 +13,9 @@ from .models import Review, Unknown
 def index(request):
     
     company = Company.objects.all()
+    review = Review.objects.all()
     
-    context = {'company':company}
+    context = {'company':company,'showreview':review}
     return render(request, 'home/index.html',context)
 def home(request):
     
@@ -33,9 +34,9 @@ def home(request):
 @login_required(login_url='login')
 def employeeProfile(request):
 
+    
     company = Company.objects.all()
     
-
     context = {'company':company}
 
     return render(request, 'home/employeeprofile.html',context)
@@ -100,3 +101,32 @@ def companyDashboard(request):
 
 
     return render(request, 'home/companydashboard.html')
+
+@login_required(login_url='login')
+def editReview(request,pk):
+
+    showreview = Review.objects.get(id=pk)
+    reviewform = ReviewForm(instance=showreview)
+    
+    if request.method == 'POST':
+        reviewform = ReviewForm(request.POST,instance=showreview)
+        if reviewform.is_valid():
+            reviewform.save()
+            return redirect('employee')
+    
+    context = {'reviewform':reviewform}
+    return render(request, 'home/editreview.html',context)
+
+@login_required(login_url='login')
+def deleteReview(request,pk):
+
+    showreview = Review.objects.get(id=pk)
+    
+    if request.method == 'POST':
+        showreview.delete()
+        return redirect('employee')
+
+    
+    
+    context = {'showreview':showreview}
+    return render(request, 'home/deletereview.html',context)
