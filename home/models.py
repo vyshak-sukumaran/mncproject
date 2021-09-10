@@ -4,11 +4,11 @@ from accounts.models import Company, Employee, User
 # Create your models here.
 
 CHOICES = (
-    (1,1),
-    (2,2),
-    (3,3),
-    (4,4),
-    (5,5),
+    (1,'⭐'),
+    (2,'⭐⭐'),
+    (3,'⭐⭐⭐'),
+    (4,'⭐⭐⭐⭐'),
+    (5,'⭐⭐⭐⭐⭐'),
 )
 
 

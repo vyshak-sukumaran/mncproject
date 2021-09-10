@@ -1,5 +1,6 @@
 {% extends './base.html' %}
 {% load static %}
+{% load custom_tags %}
 
 {% block title %}Home{% endblock %}
 {% block content %}
@@ -50,17 +51,16 @@
                         
                     <div class="companies-list">
                         <h2>Name : {{item.user.username}}</h2>
-                        <p>Company Descirption : {{item.description}} </p>
-                       
-                        <p>Average Rating : 
+                        <p>Company Descirption : {{item.description}} </p>    
                         
-                        <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                        <img src="{% static 'img/star.jpg' %}" alt="" class="star-img"> 
-                        <img src="{% static 'img/star.jpg' %}" alt="" class="star-img"> 
-                        <img src="{% static 'img/star.jpg' %}" alt="" class="star-img"> 
+                        <p>Average Rating :
+                        {% with average=showreview|avg:item.id|floatformat:"0" %}
+                            {% for rating in average|times %}
+                                <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                            {% endfor %}
+                                                            
+                        {% endwith %}
                         
-                    
-                            
                         </p>
                     
                             <a href="{% url 'openreview' item.id %} " class="btn btn-primary">View Reviews</a>

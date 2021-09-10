@@ -13,23 +13,11 @@ from .models import Review, Unknown
 def index(request):
     
     company = Company.objects.all()
-    review = Review.objects.all()
+    showreview = Review.objects.all()
     
-    context = {'company':company,'showreview':review}
+    
+    context = {'company':company,'showreview':showreview}
     return render(request, 'home/index.html',context)
-def home(request):
-    
-    if request.method == 'POST':
-        if request.POST.get('addpost'):
-            newpost = Review()
-            newpost.post = request.POST.get('addpost')
-            newpost.save()
-    newpost = Review.objects.all()
-
-
-
-    context = {'newpost':newpost}    
-    return render(request, 'home/home.html',context)
 
 @login_required(login_url='login')
 def employeeProfile(request):
@@ -69,7 +57,6 @@ def openReview(request,pk):
     
     showreview = Review.objects.all()
 
-
     context = {'company':company,'review':reviewform,'showreview':showreview}
 
     return render(request, 'home/openreview.html',context)
@@ -97,10 +84,15 @@ def unknownReview(request,pk):
     return render(request, 'home/unknownreview.html',context)
 
 @login_required(login_url='login')
-def companyDashboard(request):
-
-
-    return render(request, 'home/companydashboard.html')
+def companyDashboard(request,pk):
+    
+    try:
+        company = Company.objects.get(id=pk)
+    except Company.DoesNotExist:
+        company = None
+        
+    context = {'company':company}
+    return render(request, 'home/companydashboard.html',context)
 
 @login_required(login_url='login')
 def editReview(request,pk):
