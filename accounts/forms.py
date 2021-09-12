@@ -109,6 +109,14 @@ class CompanyProfileForm(forms.ModelForm):
 
 
 class EmployeeProfileForm(forms.ModelForm):
+    company = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+                "id":"company"
+            }
+        )
+    )
 
     image = forms.ImageField(
         widget=forms.FileInput(
@@ -139,7 +147,8 @@ class EmployeeProfileForm(forms.ModelForm):
             }
         )
     )
+    
 
     class Meta:
         model = Employee
-        fields = ['image', 'age', 'address', 'phone']
+        fields = ['image', 'age','company', 'address', 'phone']

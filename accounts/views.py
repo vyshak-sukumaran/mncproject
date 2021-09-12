@@ -1,3 +1,4 @@
+from django.http.response import JsonResponse
 from accounts.models import User
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
@@ -5,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 
-from .models import User
+from .models import Company, User
 from .forms import SignUpForm, CompanyProfileForm, UserForm, EmployeeProfileForm
 
 # Create your views here.
@@ -77,13 +78,17 @@ def editCompany(request):
 
 def editEmployee(request):
 
+    try:
+        ins = request.user.employee
+    except:
+        ins = None
     u_form = UserForm(instance = request.user)
-    p_form = EmployeeProfileForm()
+    p_form = EmployeeProfileForm(instance=ins)
 
 
     if request.method == 'POST':
         u_form = UserForm(request.POST, instance = request.user)
-        p_form = EmployeeProfileForm(request.POST, request.FILES)
+        p_form = EmployeeProfileForm(request.POST, request.FILES, instance=ins)
         if u_form.is_valid() and p_form.is_valid():
             user = u_form.save()
             profile = p_form.save(commit=False)
@@ -92,7 +97,12 @@ def editEmployee(request):
             messages.success(request, 'account has been updated')
             return redirect('employee')
 
-
+    if 'term' in request.GET:
+        company = Company.objects.filter(user__username__startswith=request.GET.get('term'))
+        users = list()
+        for cmp in company:
+            users.append(cmp.user.username)
+        return JsonResponse(users, safe=False)
     context = {'u_form':u_form, 'p_form':p_form}
 
     return render(request, 'accounts/editemployeeprofile.html', context)

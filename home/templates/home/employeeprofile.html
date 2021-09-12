@@ -16,6 +16,9 @@
                             <h1>{{request.user}}</h1>
                             <p>{{request.user.email}}</p>
                             <p>{{request.user.employee.phone}}</p>
+                            {% if request.user.employee.company and request.user.employee.is_approved %}
+                            <p>{{request.user.employee.company}}</p>
+                            {% endif %}
                         </div>
          
                    

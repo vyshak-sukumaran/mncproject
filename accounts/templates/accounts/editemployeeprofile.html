@@ -15,8 +15,12 @@
 
                        <h3 class="text-center login-heading">Edit Profile</h3>
                        <div class="form-group">
-                           <label for="">Company Name</label>
+                           <label for="">Name</label>
                            {{u_form.first_name}}
+                       </div>
+                       <div class="form-group">
+                           <label for="">Company Name</label>
+                           {{p_form.company}}
                        </div>
                        <div class="form-group">
                            <label for="">Profile Photo</label>
@@ -53,9 +57,17 @@
               </div>
           </div>
       </div>
-
-
-
         
 
 {% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+
+$( function() {
+    $( "#company" ).autocomplete({
+      source:"{% url 'editemployee' %}" 
+    });
+} );
+
+</script>
+{% endblock javascript %}

@@ -1,3 +1,4 @@
+from os import truncate
 from django.db import models
 
 from PIL import Image
@@ -33,11 +34,13 @@ class Company(models.Model):
 
 class Employee(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='employee')
-
+    company = models.CharField(max_length=100,null=True)
     image = models.ImageField(upload_to='employeeprofile/', default='default.png')
     age = models.CharField(max_length=3)
     address = models.CharField(max_length=300)
     phone = models.CharField(max_length=12, null=True)
+    is_approved = models.BooleanField(default=False,null=True)
+    is_rejected = models.BooleanField(default=False,null=True)
 
     def __str__(self):
         return f'{self.user.username} profile'
