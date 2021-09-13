@@ -3,6 +3,7 @@ from django.http.response import Http404, JsonResponse
 from home.forms import ReviewForm,UnknownForm
 from django.db.models.query_utils import Q
 from django.shortcuts import redirect, render
+from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.db.models import Avg
@@ -13,9 +14,9 @@ from .models import Review, Unknown
 # Create your views here.
 
 def index(request):
-    company = Company.objects.all()
-    showreview = Review.objects.all()
     
+    showreview = Review.objects.all()
+    company = Company.objects.all()
     
     context = {'company':company,'showreview':showreview}
     return render(request, 'home/index.html',context)

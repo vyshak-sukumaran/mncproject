@@ -103,27 +103,15 @@ a:hover{
     margin-top: 10px;
     box-shadow: 0 0 15px 0px #a6b2be;
 }
-.search{
-    border: 1px solid rgb(69, 125, 134);
-    display: block;
-    margin-left: auto;
-    width: 23%;
-    border-radius: 50px;
-    display: flex;
-}
-.search input{
-    border: 0;
-    background-color: transparent;
-    height: 50px;
-    padding-left:15px ;
-}
-.search button{
-    background-color: transparent;
-    border: 0;
-    /* padding: 0px; */
-}
 
-
+.search-group{
+  margin-bottom: 3px;
+  margin-left: auto;
+  display: flex;
+}
+.search-group input{
+  border-radius: 20px;
+}
 *,*:focus,*:hover{
     outline:none;
 }

@@ -54,6 +54,7 @@ def logoutUser(request):
     logout(request)
     return redirect('index')
 
+@login_required(login_url='login')
 def editCompany(request):
 
     u_form = UserForm(instance = request.user)
@@ -76,6 +77,7 @@ def editCompany(request):
 
     return render(request, 'accounts/editcompanyprofile.html', context)
 
+@login_required(login_url='login')
 def editEmployee(request):
 
     try:

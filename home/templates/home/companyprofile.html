@@ -1,5 +1,6 @@
 {% extends './base.html' %}
 {% load static %}
+{% load custom_tags %}
 
 
 {% block title %}Company profile{% endblock %}
@@ -49,10 +50,10 @@
                         </div>
                         <p>{{item.post}} </p>
                         <p>Rating - 
-                            <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                            <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                            <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                            <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                            {% for i in item.rating|times %}
+                                <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                            {% endfor %}
+                            
                         </p>
                         <a href="#" class="btn btn-primary">View Review</a>
                       </div>

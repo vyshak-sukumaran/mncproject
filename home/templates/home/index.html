@@ -33,42 +33,33 @@
           <div class="row">
           
               <div class="col-md-12">
-              
-                <form action="" method="post" class="search-form">
+              <!-- Search bar-->
+                <form class="form-inline" method="post" action="">
                 {% csrf_token %}
-                    <div class="search mb-4">
-                        <input type="text" class="form-search" placeholder="Search Company">
-                        <button>
-                          <i class="fas fa-search"></i>
-                        </button>
-                    </div>
+                <div class="search-group">
+                    <input id="search-input" type="search" class="form-control" placeholder="Search...">  
+                    <button id="search-button" type="button" class="btn btn-primary btn-sm">
+                    <i class="fa fa-search"></i>
+                    </button>
+                </div>
                 </form>
-                
                 <h2>Top Rated companies</h2>
  
-
-                {% for item in company %}
-                        
-                    <div class="companies-list">
-                        <h2>Name : {{item.user.username}}</h2>
-                        <p>Company Descirption : {{item.description}} </p>    
-                        
-                        <p>Average Rating :
-                        {% with average=showreview|avg:item.id|floatformat:"0" %}
-                            {% for rating in average|times %}
-                                <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
-                            {% endfor %}
-                                                            
-                        {% endwith %}
-                        
-                        </p>
-                    
-                            <a href="{% url 'openreview' item.id %} " class="btn btn-primary">View Reviews</a>
-                        
-                    </div>
-
-                {% endfor %}
-
+                {% for item in company %}                      
+                  <div class="companies-list">
+                      <h2>Name : {{item.user.username}}</h2>
+                      <p>Company Descirption : {{item.description}} </p>    
+                      
+                      <p>Average Rating :
+                      {% with average=showreview|avg:item.id|floatformat:"0" %}
+                          {% for rating in average|times %}
+                              <img src="{% static 'img/star.jpg' %}" alt="" class="star-img">
+                          {% endfor %}                                          
+                      {% endwith %}
+                      </p>
+                          <a href="{% url 'openreview' item.id %} " class="btn btn-primary">View Reviews</a>      
+                  </div>
+              {% endfor %}
 
                 <!-- company list -->
               
@@ -78,3 +69,5 @@
 
 
 {% endblock %}
+{% block javascript %}
+{% endblock javascript %}
